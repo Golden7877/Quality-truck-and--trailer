@@ -20,7 +20,13 @@ export default function Navbar() {
         <div className="flex justify-between h-20">
           <div className="flex-shrink-0 flex items-center">
             <Link href="/">
-              <a className="text-2xl font-bold text-primary">Quality Truck and Trailer Tires</a>
+              <a className="flex items-center">
+                <img 
+                  src="/logo.png" 
+                  alt="Quality Truck and Trailer Tires" 
+                  className="h-12"
+                />
+              </a>
             </Link>
           </div>
 

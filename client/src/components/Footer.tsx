@@ -6,7 +6,11 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div>
-            <h3 className="text-lg font-semibold mb-4">Quality Truck and Trailer Tires</h3>
+            <img 
+              src="/logo.png" 
+              alt="Quality Truck and Trailer Tires" 
+              className="h-16 mb-4 brightness-0 invert"
+            />
             <p className="text-sm">Professional truck and trailer tire services you can trust.</p>
           </div>
 
