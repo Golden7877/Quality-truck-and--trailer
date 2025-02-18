@@ -1,39 +1,29 @@
-import { users, type User, type InsertUser } from "@shared/schema";
+import { contact, type ContactForm } from "@shared/schema";
+import { drizzle } from "drizzle-orm/postgres-js";
+import postgres from 'postgres';
 
 // modify the interface with any CRUD methods
 // you might need
 
 export interface IStorage {
-  getUser(id: number): Promise<User | undefined>;
-  getUserByUsername(username: string): Promise<User | undefined>;
-  createUser(user: InsertUser): Promise<User>;
+  createContact(data: ContactForm): Promise<ContactForm>;
+  getContacts(): Promise<ContactForm[]>;
 }
 
-export class MemStorage implements IStorage {
-  private users: Map<number, User>;
-  currentId: number;
+// Create the database connection
+const sql = postgres(process.env.DATABASE_URL!);
+const db = drizzle(sql);
 
-  constructor() {
-    this.users = new Map();
-    this.currentId = 1;
+export class DbStorage implements IStorage {
+  async createContact(data: ContactForm): Promise<ContactForm> {
+    const [newContact] = await db.insert(contact).values(data).returning();
+    return newContact;
   }
 
-  async getUser(id: number): Promise<User | undefined> {
-    return this.users.get(id);
-  }
-
-  async getUserByUsername(username: string): Promise<User | undefined> {
-    return Array.from(this.users.values()).find(
-      (user) => user.username === username,
-    );
-  }
-
-  async createUser(insertUser: InsertUser): Promise<User> {
-    const id = this.currentId++;
-    const user: User = { ...insertUser, id };
-    this.users.set(id, user);
-    return user;
+  async getContacts(): Promise<ContactForm[]> {
+    return await db.select().from(contact);
   }
 }
 
-export const storage = new MemStorage();
+// Export an instance of DbStorage
+export const storage = new DbStorage();

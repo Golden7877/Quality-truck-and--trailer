@@ -32,13 +32,35 @@ export async function registerRoutes(app: Express): Promise<Server> {
     res.json(servicesData);
   });
 
-  app.post("/api/contact", (req, res) => {
+  app.post("/api/contact", async (req, res) => {
     try {
       const validatedData = contactFormSchema.parse(req.body);
-      // In a real app, would store this in the database
-      res.json({ success: true, message: "Message sent successfully" });
+      const contact = await storage.createContact(validatedData);
+      res.json({ 
+        success: true, 
+        message: "Message sent successfully",
+        contact 
+      });
     } catch (error) {
-      res.status(400).json({ error: "Invalid form data" });
+      console.error('Contact form submission error:', error);
+      res.status(400).json({ 
+        success: false,
+        error: "Failed to submit contact form. Please try again." 
+      });
+    }
+  });
+
+  // Admin route to get all contacts
+  app.get("/api/contacts", async (_req, res) => {
+    try {
+      const contacts = await storage.getContacts();
+      res.json(contacts);
+    } catch (error) {
+      console.error('Error fetching contacts:', error);
+      res.status(500).json({ 
+        success: false,
+        error: "Failed to fetch contacts" 
+      });
     }
   });
 
