@@ -1,21 +1,21 @@
 import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
-import { Phone, ArrowRight } from "lucide-react";
+import { Phone, ArrowRight, Clock, Users, Wrench } from "lucide-react";
 
 export default function Hero() {
   return (
-    <div className="relative bg-[url('https://images.unsplash.com/photo-1599256871679-6a154745680b')] bg-cover bg-center">
-      <div className="absolute inset-0 bg-black/60" />
+    <div className="relative bg-[url('https://images.unsplash.com/photo-1599256871679-6a154745680b')] bg-cover bg-center bg-fixed">
+      <div className="absolute inset-0 bg-gradient-to-r from-black/80 to-black/60" />
       <div className="relative max-w-7xl mx-auto px-4 py-32 sm:py-48 lg:py-56">
         <div className="max-w-2xl">
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight animate-fade-in">
             Professional Truck Service & Repair Solutions
           </h1>
           <p className="text-xl text-gray-200 mb-8 leading-relaxed">
             Keeping America's trucks on the road with expert maintenance, repairs, and 24/7 emergency services.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
-            <Button size="lg" className="gap-2">
+            <Button size="lg" className="gap-2 animate-pulse">
               <Phone className="h-5 w-5" />
               <a href="tel:1-800-TRUCK-SERVICE">Call Now</a>
             </Button>
@@ -35,24 +35,22 @@ export default function Hero() {
             {
               title: "24/7 Emergency Service",
               description: "Roadside assistance whenever you need it",
-              icon: "alert-circle"
+              icon: <Clock className="h-10 w-10" />
             },
             {
               title: "Expert Technicians",
               description: "ASE certified professionals you can trust",
-              icon: "users"
+              icon: <Users className="h-10 w-10" />
             },
             {
               title: "Full Service Repair",
               description: "Complete maintenance and repair solutions",
-              icon: "wrench"
+              icon: <Wrench className="h-10 w-10" />
             }
           ].map((item, index) => (
-            <div key={index} className="bg-white rounded-lg shadow-xl p-8">
+            <div key={index} className="bg-white rounded-lg shadow-xl p-8 transform hover:-translate-y-1 transition-transform duration-300">
               <div className="text-primary mb-4">
-                {/* This needs to be fixed.  The edited code is incomplete.  Assuming it should render an icon based on 'item.icon'  */}
-                {/* Placeholder, needs a proper icon library integration */}
-                <span>{item.title}</span> 
+                {item.icon}
               </div>
               <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
               <p className="text-gray-600">{item.description}</p>
