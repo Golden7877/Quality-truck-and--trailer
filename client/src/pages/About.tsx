@@ -4,9 +4,9 @@ export default function About() {
   return (
     <div className="max-w-7xl mx-auto px-4 py-12">
       <div className="text-center mb-12">
-        <h1 className="text-4xl font-bold mb-4">About Truck Service Co.</h1>
+        <h1 className="text-4xl font-bold mb-4">About Quality Truck and Trailer Tires</h1>
         <p className="text-xl text-muted-foreground">
-          Your trusted partner in truck repair and maintenance
+          Your trusted partner in truck and trailer tire services
         </p>
       </div>
 
@@ -14,12 +14,12 @@ export default function About() {
         <div>
           <h2 className="text-3xl font-bold mb-6">Our Story</h2>
           <p className="text-lg mb-4">
-            Since 1990, Truck Service Co. has been providing professional truck repair
-            and maintenance services to fleet operators and independent drivers alike.
+            Since 1990, Quality Truck and Trailer Tires has been providing professional tire services
+            to fleet operators and independent drivers alike. 
           </p>
           <p className="text-lg mb-4">
             Our commitment to quality service, fair pricing, and customer satisfaction
-            has made us a leader in the truck service industry.
+            has made us a leader in the truck tire service industry.
           </p>
         </div>
         <div>

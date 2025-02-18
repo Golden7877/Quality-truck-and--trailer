@@ -9,10 +9,10 @@ export default function Hero() {
       <div className="relative max-w-7xl mx-auto px-4 py-32 sm:py-48 lg:py-56">
         <div className="max-w-2xl">
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight animate-fade-in">
-            Professional Truck Service & Repair Solutions
+            Professional Truck & Trailer Tire Solutions
           </h1>
           <p className="text-xl text-gray-200 mb-8 leading-relaxed">
-            Keeping America's trucks on the road with expert maintenance, repairs, and 24/7 emergency services.
+            Keeping America's trucks and trailers rolling with expert tire services, maintenance, and 24/7 emergency assistance.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
             <Button size="lg" className="gap-2 animate-pulse">
